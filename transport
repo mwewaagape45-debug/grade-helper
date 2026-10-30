@@ -1,0 +1,40 @@
+# STABLE VERSION - Accumulator, Counter, Validation, Sentinel
+
+total_fare = 0.0  # accumulator
+trip_count = 0    # counter
+
+print("Enter fares one by one. Type 'q' to finish (sentinel)")
+
+while True:
+    data = input(f"Trip {trip_count + 1} fare (or q to stop): ").strip().lower()
+
+    # SENTINEL - stable way to stop
+    if data == 'q':
+        break
+
+    # VALIDATION 1 - must be a number
+    try:
+        fare = float(data)
+    except ValueError:
+        print("Invalid! Enter a number like 15 or q to stop")
+        continue
+
+    # VALIDATION 2 - cannot be negative
+    if fare < 0:
+        print("Fare cannot be negative, try again")
+        continue
+
+    # If we reach here, it's valid - so count it
+    total_fare += fare   # accumulator
+    trip_count += 1      # counter
+    print(f"Added K{fare:.2f}")
+
+# Final - safe, no division by zero
+print("\n--- RESULTS ---")
+if trip_count > 0:
+    average = total_fare / trip_count
+    print(f"Trips: {trip_count}")
+    print(f"Total: K{total_fare:.2f}")
+    print(f"Average: K{average:.2f}")
+else:
+    print("No valid fares entered")

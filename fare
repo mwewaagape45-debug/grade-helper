@@ -1,0 +1,32 @@
+# Transport Fare - Accumulator, Counter, Validation
+
+total_fare = 0.0  # accumulator - adds up all fares
+trip_count = 0    # counter - counts valid trips
+
+trips = int(input("How many trips? "))
+
+if trips > 0:
+    # Loop for the number of trips entered
+    for i in range(trips):
+        fare = float(input(f"Enter fare for trip {i+1}: "))
+
+        # VALIDATION - fare cannot be negative
+        if fare < 0:
+            print("Fare cannot be negative, skipped")
+            continue  # skip this one, don't count it
+
+        # ACCUMULATOR
+        total_fare = total_fare + fare
+
+        # COUNTER
+        trip_count = trip_count + 1
+
+# Final calculation
+if trip_count > 0:
+    average = total_fare / trip_count
+    print(f"\nTrips: {trip_count}")
+    print(f"Total fare: K{total_fare:.2f}")
+    print(f"Average: K{average:.2f}")
+else:
+    print("No valid fares")
+
