@@ -1,0 +1,29 @@
+
+# transport_fare.py
+
+trips = int(input("Enter number of trips: "))
+
+total = 0
+
+for trip in range(1, trips + 1):
+    fare = float(input(f"Enter fare for trip {trip}: K"))
+    total += fare
+
+if trips > 0:
+    average = total / trips
+else:
+    average = 0
+
+budget = float(input("Enter weekly budget: K"))
+
+print("\n----- TRANSPORT SUMMARY -----")
+print(f"Number of trips: {trips}")
+print(f"Total transport cost: K{total:.2f}")
+print(f"Average fare: K{average:.2f}")
+
+if total > budget:
+    print("Warning: You have exceeded your budget!")
+else:
+    print("You are within your budget.")
+
+
